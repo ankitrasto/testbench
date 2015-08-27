@@ -1,0 +1,21 @@
+Analysis_Directory = /home/ankit/Documents/cTBS_DATA_ANALYSIS/MEANTS
+R_Crus1,R_IPL
+R_Crus1,R_BA8
+R_Crus1,R_BA9
+R_Crus1,R_BA10
+R_Crus1,L_IPL
+R_Crus1,L_BA8
+R_Crus1,L_BA9
+R_Crus1,L_BA10
+R_Crus1,M_BA7
+R_Crus1,M_PCC
+R_Crus2,R_IPL
+R_Crus2,R_BA8
+R_Crus2,R_BA9
+R_Crus2,R_BA10
+R_Crus2,L_IPL
+R_Crus2,L_BA8
+R_Crus2,L_BA9
+R_Crus2,L_BA10
+R_Crus2,M_BA7
+R_Crus2,M_PCC
