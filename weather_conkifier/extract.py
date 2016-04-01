@@ -55,18 +55,28 @@ def environmentCanada(data): #environment Canada RSS
 		strFuture = (substring(highString,None,data).split("\n")[0])
 		strFutureArray = strFuture.split(" ")
 		
-		fltFutureHigh = float(re.findall("\d+", substring("High",None,strFuture))[0])
+		try:
+			fltFutureHigh = float(re.findall("\d+", substring("plus",None,strFuture))[0])
+		except:
+			fltFutureHigh = float(re.findall("\d+", substring("minus",None,strFuture))[0])
+			
 		strFutureCond = strFuture.split(".")[0]
 		if(strFuture.find("minus") >= 0): fltFutureHigh *= -1
+		if(strFuture.find("zero") >= 0): fltFutureHigh = 0
 		#print strFutureCond
 		#print fltFutureHigh, "H"
 		strMasterForecast += strFutureCond + "\n" + str(int(round(fltFutureHigh))) + " H\n"
 		
-		
 		highString = (today+datetime.timedelta(days=i)).strftime("%A")+" night:"
 		strFuture = (substring(highString,None,data).split("\n")[0])
-		fltFutureLow = float(re.findall("\d+", substring("Low",None,strFuture))[0])
+		
+		try:
+			fltFutureLow = float(re.findall("\d+", substring("plus",None,strFuture))[0])
+		except:
+			fltFutureLow = float(re.findall("\d+", substring("minus",None,strFuture))[0])
+		
 		if(strFuture.find("minus") >= 0): fltFutureLow *= -1
+		if(strFuture.find("zero") >= 0): fltFutureLow = 0
 		#print fltFutureLow, "L"
 		strMasterForecast += str(int(round(fltFutureLow))) + " L\n"
 		
@@ -93,10 +103,13 @@ def getXMLfield(fieldName, data):
 #relative string extraction
 def substring(beginKey, endKey, auxData):
 	if endKey == None:
-		return auxData[auxData.index(beginKey)+len(beginKey):]
+		try:
+			return auxData[auxData.index(beginKey)+len(beginKey):]
+		except: return "ERR"
 	else:
-		return auxData[auxData.index(beginKey)+len(beginKey):auxData.rindex(endKey)]
-	
+		try:
+			return auxData[auxData.index(beginKey)+len(beginKey):auxData.rindex(endKey)]
+		except: return "0ERR"
 
 def processArgs():
 	parser = argparse.ArgumentParser(description="extract weather data from XML/RSS feeds")
