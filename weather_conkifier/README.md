@@ -15,15 +15,25 @@ currently the options are:
 
 The program outputs (and/or overwrites) a text file "parsed_forecast.txt", in the format (let n be the current day):
 ```<Current Temperature in deg.C or F>
+
 <Wind Speed + Direction>
+
 <Pressure + Tendency>
+
 <Current weather condition, text>
+
 <Next Day's Weather condition, text>
+
 <Next Day's forecasted high>
+
 <Next Day's forecasted low>
+
 <day n+2: weather condition, text>
+
 <day n+2: forecasted high>
+
 <day n+3: forecasted low>
+
 EOF.```
 
 
