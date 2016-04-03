@@ -1,10 +1,10 @@
-11.2
-20.0 km/h SSW
-Light Rain
-100.1 kPa falling
-Chance of showers
-5 H
-1 L
-Chance of flurries or rain showers
-4 H
--9 L
+-3.6
+39.0 km/h NW
+Mainly Sunny
+101.5 kPa rising
+Snow
+-1 H
+-11 L
+Sunny
+0 H
+-4 L

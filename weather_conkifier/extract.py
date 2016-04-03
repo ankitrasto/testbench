@@ -54,15 +54,17 @@ def environmentCanada(data): #environment Canada RSS
 		highString = (today+datetime.timedelta(days=i)).strftime("%A")+": " #next day in full text
 		strFuture = (substring(highString,None,data).split("\n")[0])
 		strFutureArray = strFuture.split(" ")
-		
-		try:
-			fltFutureHigh = float(re.findall("\d+", substring("plus",None,strFuture))[0])
-		except:
-			fltFutureHigh = float(re.findall("\d+", substring("minus",None,strFuture))[0])
+				
+		if(strFuture.find("zero") >= 0): 
+			fltFutureHigh = 0
+		else:	
+			try:
+				fltFutureHigh = float(re.findall("\d+", substring("plus",None,strFuture))[0])
+			except:
+				fltFutureHigh = float(re.findall("\d+", substring("minus",None,strFuture))[0])
 			
 		strFutureCond = strFuture.split(".")[0]
 		if(strFuture.find("minus") >= 0): fltFutureHigh *= -1
-		if(strFuture.find("zero") >= 0): fltFutureHigh = 0
 		#print strFutureCond
 		#print fltFutureHigh, "H"
 		strMasterForecast += strFutureCond + "\n" + str(int(round(fltFutureHigh))) + " H\n"
@@ -70,13 +72,15 @@ def environmentCanada(data): #environment Canada RSS
 		highString = (today+datetime.timedelta(days=i)).strftime("%A")+" night:"
 		strFuture = (substring(highString,None,data).split("\n")[0])
 		
-		try:
-			fltFutureLow = float(re.findall("\d+", substring("plus",None,strFuture))[0])
-		except:
-			fltFutureLow = float(re.findall("\d+", substring("minus",None,strFuture))[0])
+		if(strFuture.find("zero") >= 0): 
+			fltFutureLow = 0
+		else:
+			try:
+				fltFutureLow = float(re.findall("\d+", substring("plus",None,strFuture))[0])
+			except:
+				fltFutureLow = float(re.findall("\d+", substring("minus",None,strFuture))[0])
 		
 		if(strFuture.find("minus") >= 0): fltFutureLow *= -1
-		if(strFuture.find("zero") >= 0): fltFutureLow = 0
 		#print fltFutureLow, "L"
 		strMasterForecast += str(int(round(fltFutureLow))) + " L\n"
 		
